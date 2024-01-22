@@ -144,6 +144,7 @@ export function parser(tokens) {
   };
   var paper = false;
   var pen = false;
+  var repeat = false;
 
   while (tokens.length > 0) {
     var current_token = tokens.shift();
@@ -153,12 +154,18 @@ export function parser(tokens) {
           var block = {
             type: "Block Start",
           };
+          if (repeat) {
+            console.log("we have to repeat this until we find }");
+          }
           AST.body.push(block);
           break;
         case "}":
           var block = {
             type: "Block End",
           };
+          if (repeat) {
+            repeat = false;
+          }
           AST.body.push(block);
           break;
         case "//":
@@ -241,6 +248,9 @@ export function parser(tokens) {
           }
 
           AST.body.push(obj);
+          break;
+        case "repeat":
+          repeat = true;
           break;
         default:
           throw current_token.value + " is not a valid command";

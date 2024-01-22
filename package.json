@@ -1,0 +1,16 @@
+{
+  "name": "compiler",
+  "version": "0.5.6",
+  "description": "A compiler for small drawing language sbn(SVG by Numbers). Inspired by John Maeda's book: Design by Numbers.",
+  "main": "sbn.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node ./compiler/index.js",
+    "build": "rollup ./compiler/index.js -n sbn -f umd -o sbn.js"
+  },
+  "author": "boringtutor",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "rollup": "^0.36.1"
+  }
+}

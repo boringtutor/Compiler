@@ -4,8 +4,10 @@ export function lexer(code) {
     .replace(/\🏁/g, " *ob* ")
     .replace(/\🍇/g, " *ocb* ")
     .replace(/\🍉/g, " *ccb* ")
+    .replace(/\😀/g, " *cl* ") //console.log
+    .replace(/\🔤/g, " *sl* ") //string literal
     .split(/[\t\f\v ]+/);
-
+  console.log(_tokens);
   const tokens = [];
   for (let i = 0; i < _tokens.length; i++) {
     const token = _tokens[i];
@@ -25,6 +27,14 @@ export function lexer(code) {
     } else if (token === "*ccb*") {
       tokens.push({
         type: "end-block",
+      });
+    } else if (token === "*cl*") {
+      tokens.push({
+        type: "console-log",
+      });
+    } else if (token === "*sl*") {
+      tokens.push({
+        type: "string-literal",
       });
     } else {
       tokens.push({

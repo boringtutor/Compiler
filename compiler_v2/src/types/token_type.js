@@ -1,0 +1,17 @@
+export const TokenType = {
+  NL: "*nl*",
+  OB: "*ob*",
+  CB: "*cb*",
+  OCB: "*ocb*",
+  CCB: "*ccb*",
+  WORD: "WORD",
+  NUMBER: "NUMBER",
+  STRING: "STRING",
+  BOOLEAN: "BOOLEAN",
+  NULL: "NULL",
+  UNDEFINED: "UNDEFINED",
+  OPERATOR: "OPERATOR",
+  COMMENT: "COMMENT",
+  EOF: "EOF",
+  ERROR: "ERROR",
+};

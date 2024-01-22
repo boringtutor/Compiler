@@ -42,10 +42,43 @@ export function lexer(code) {
 }
 
 export function parser(tokens) {
+  var AST = {
+    type: "Program",
+    body: [],
+  };
+
   while (tokens.length > 0) {
     var current_token = tokens.shift();
-    if (current_token.type === "string") {
-      console.log(current_token.value);
+    switch (current_token.type) {
+      case "start-block":
+        var node = {
+          type: "Code",
+          body: "{",
+        };
+        AST.body.push(node);
+        break;
+      case "end-block":
+        var node = {
+          type: "Code",
+          body: "}",
+        };
+        AST.body.push(node);
+        break;
+      case "newline":
+        var node = {
+          type: "Code",
+          body: "\n",
+        };
+        AST.body.push(node);
+        break;
+      case "string":
+        var node = {
+          type: "Execute",
+          body: current_token.value,
+        };
+        AST.body.push(node);
+        break;
     }
   }
+  return AST;
 }

@@ -2,6 +2,10 @@
 
 This compiler is small version of emojie language compiler written in c. Inspired by [https://github.com/emojicode/emojicode]
 
+## Target
+
+Given the emojie code return the javascript code
+
 ## Supported Keywords
 
 This compiler is work-in-progress. Here is a list of commands currently supported (v0.4.3) & planning to implement.
